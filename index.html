@@ -1,57 +1,80 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ProBot | Discord Bot</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProBot | Giriş</title>
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#f4f8ff;color:#193568}
-header{padding:20px 7%;display:flex;justify-content:space-between;align-items:center;background:white;border-bottom:1px solid #dce8fa}
-.logo{font-size:27px;font-weight:bold;color:#2563eb}
-nav a{margin-left:18px;text-decoration:none;color:#34517f}
-.hero{text-align:center;padding:95px 20px;background:linear-gradient(135deg,#e3efff,#fff)}
-.hero h1{font-size:48px;margin:20px}
-.hero h1 span{color:#2563eb}
-.hero p{color:#64748b;line-height:1.8}
-.btn{display:inline-block;background:#2563eb;color:white;padding:14px 25px;border-radius:10px;text-decoration:none;margin-top:25px}
-section{padding:65px 7%;text-align:center}
-h2{font-size:32px;margin-bottom:12px}
-.sub{color:#71809a;margin-bottom:30px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
-.card{background:white;border:1px solid #dce8fa;border-radius:15px;padding:25px;text-align:left}
-.card h3{color:#2563eb;margin-bottom:10px}
-.card p{color:#71809a;font-size:14px;line-height:1.7}
-.panel{background:#e5efff}
-.panel-box{max-width:750px;margin:auto;background:white;border-radius:18px;padding:35px}
-footer{padding:30px;text-align:center;background:white;color:#71809a}
-@media(max-width:600px){.hero h1{font-size:36px}nav a{margin-left:8px;font-size:12px}}
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #10121c;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.login {
+    width: 90%;
+    max-width: 420px;
+    padding: 40px 25px;
+    text-align: center;
+    background: #1b1f30;
+    border: 1px solid #30364d;
+    border-radius: 18px;
+}
+
+h1 {
+    color: #8295ff;
+    font-size: 38px;
+}
+
+p {
+    color: #b9bfd4;
+    line-height: 1.6;
+}
+
+button {
+    margin-top: 20px;
+    padding: 15px 25px;
+    border: 0;
+    border-radius: 9px;
+    background: #5865f2;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #4752c4;
+}
 </style>
 </head>
+
 <body>
 
-<header>
-<div class="logo">🔷 ProBot</div>
-<nav>
-<a href="#home">Ana Sayfa</a>
-<a href="#features">Özellikler</a>
-<a href="#panel">Panel</a>
-</nav>
-</header>
+<div class="login">
+    <h1>ProBot</h1>
+    <p>Discord sunucunu yönetmek için hesabınla giriş yap.</p>
 
-<main>
-<div class="hero" id="home">
-<h1>Discord sunucunun<br><span>yeni gücü!</span></h1>
-<p>Sunucunu yönet, topluluğunu büyüt.<br>
-Bütün sistemler tek bir yerde.</p>
- <a class="btn" href="https://discord.com/oauth2/authorize?client_id=BOT_ID&response_type=code&redirect_uri=CALLBACK_URL&scope=identify%20guilds">Discord ile Giriş
+    <button onclick="login()">
+        Discord ile Giriş Yap
+    </button>
 </div>
 
-<footer>
-<strong>ProBot</strong> © 2026<br>
-Discord sunucuları için yeni nesil yönetim.
-</footer>
+<script>
+function login() {
+    // Gerçek Discord OAuth2 bağlantısı sonraki aşamada eklenecek.
+    // Şimdilik panel taslağını görüntülemek için kullanılır.
+    window.location.href = "panel.html";
+}
+</script>
 
 </body>
 </html>
