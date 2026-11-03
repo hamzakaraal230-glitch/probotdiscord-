@@ -1,16 +1,16 @@
 export default async (request) => {
-  const CLIENT_ID = process.env.1566891805364977665;
-  const CLIENT_SECRET = process.env.Z8aBcWx2J4mLRERinQKgZGHpFzrPT0Ut;
-  const REDIRECT_URI = process.env.https://discord.com/oauth2/authorize?client_id=1566891805364977665&response_type=code&redirect_uri=https%3A%2F%2Fpapaya-piroshki-f63012.netlify.app%2F.netlify%2Ffunctions%2Fauth-callback&scope=identify+guilds;
+  const CLIENT_ID = process.env.DISCORD_CLIENT_ID;
+  const CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET;
+  const REDIRECT_URI = process.env.DISCORD_REDIRECT_URI;
 
-  const url = new URL(request.url);
-  const code = url.searchParams.get("code");
-
-  if (!1566891805364977665 || !Z8aBcWx2J4mLRERinQKgZGHpFzrPT0Ut || !https://discord.com/oauth2/authorize?client_id=1566891805364977665&response_type=code&redirect_uri=https%3A%2F%2Fpapaya-piroshki-f63012.netlify.app%2F.netlify%2Ffunctions%2Fauth-callback&scope=identify+guilds) {
+  if (!CLIENT_ID || !CLIENT_SECRET || !REDIRECT_URI) {
     return new Response("Discord ayarları eksik.", {
       status: 500
     });
   }
+
+  const url = new URL(request.url);
+  const code = url.searchParams.get("code");
 
   if (!code) {
     return new Response("Discord giriş kodu bulunamadı.", {
@@ -27,11 +27,11 @@ export default async (request) => {
           "Content-Type": "application/x-www-form-urlencoded"
         },
         body: new URLSearchParams({
-          client_id: 1566891805364977665,
-          client_secret: Z8aBcWx2J4mLRERinQKgZGHpFzrPT0Ut,
+          client_id: CLIENT_ID,
+          client_secret: CLIENT_SECRET,
           grant_type: "authorization_code",
-          code: code,
-          redirect_uri: https://discord.com/oauth2/authorize?client_id=1566891805364977665&response_type=code&redirect_uri=https%3A%2F%2Fpapaya-piroshki-f63012.netlify.app%2F.netlify%2Ffunctions%2Fauth-callback&scope=identify+guilds
+          code,
+          redirect_uri: REDIRECT_URI
         })
       }
     );
@@ -61,6 +61,11 @@ export default async (request) => {
       });
     }
 
+    const username = String(user.username).replace(
+      /[&<>"']/g,
+      ""
+    );
+
     return new Response(
       `<!DOCTYPE html>
       <html lang="tr">
@@ -72,7 +77,7 @@ export default async (request) => {
       <body style="background:#171923;color:white;text-align:center;padding:50px;font-family:Arial">
         <h1>ProBot</h1>
         <h2>Giriş başarılı!</h2>
-        <p>Hoş geldin, ${String(user.username).replace(/[&<>"']/g, "")}!</p>
+        <p>Hoş geldin, ${username}!</p>
       </body>
       </html>`,
       {
