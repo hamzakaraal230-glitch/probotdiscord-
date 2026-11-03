@@ -6,7 +6,7 @@ export default async (request) => {
   const url = new URL(request.url);
   const code = url.searchParams.get("code");
 
-  if (!1566891805364977665 || !5lp470dNJhVktXIdfH6NnhC2NaNyvrS1 || !R
+  if (!1566891805364977665 || !5lp470dNJhVktXIdfH6NnhC2NaNyvrS1 || !https://papaya-piroshki-f63012.netlify.app/.netlify/functions/auth-callback
     https://papaya-piroshki-f63012.netlify.app/.netlify/functions/auth-callback) {
     return new Response("Discord ayarları eksik.", {
       status: 500
@@ -28,11 +28,11 @@ export default async (request) => {
           "Content-Type": "application/x-www-form-urlencoded"
         },
         body: new URLSearchParams({
-          client_id: CLIENT_ID,
-          client_secret: CLIENT_SECRET,
+          client_id: 1566891805364977665,
+          client_secret: 5lp470dNJhVktXIdfH6NnhC2NaNyvrS1,
           grant_type: "authorization_code",
           code: code,
-          redirect_uri: REDIRECT_URI
+          redirect_uri: https://papaya-piroshki-f63012.netlify.app/.netlify/functions/auth-callback
         })
       }
     );
