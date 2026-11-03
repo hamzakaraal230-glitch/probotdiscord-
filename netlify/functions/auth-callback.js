@@ -1,13 +1,12 @@
 export default async (request) => {
-  const CLIENT_ID = process.env.1566891805364977665;
-  const CLIENT_SECRET = process.env.5lp470dNJhVktXIdfH6NnhC2NaNyvrS1;
-  const REDIRECT_URI = process.env.https://papaya-piroshki-f63012.netlify.app/.netlify/functions/auth-callback;
+  const CLIENT_ID = process.env.DISCORD_CLIENT_ID;
+  const CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET;
+  const REDIRECT_URI = process.env.DISCORD_REDIRECT_URI;
 
   const url = new URL(request.url);
   const code = url.searchParams.get("code");
 
-  if (!1566891805364977665 || !5lp470dNJhVktXIdfH6NnhC2NaNyvrS1 || !https://papaya-piroshki-f63012.netlify.app/.netlify/functions/auth-callback
-    https://papaya-piroshki-f63012.netlify.app/.netlify/functions/auth-callback) {
+  if (!CLIENT_ID || !CLIENT_SECRET || !REDIRECT_URI) {
     return new Response("Discord ayarları eksik.", {
       status: 500
     });
@@ -28,11 +27,11 @@ export default async (request) => {
           "Content-Type": "application/x-www-form-urlencoded"
         },
         body: new URLSearchParams({
-          client_id: 1566891805364977665,
-          client_secret: 5lp470dNJhVktXIdfH6NnhC2NaNyvrS1,
+          client_id: CLIENT_ID,
+          client_secret: CLIENT_SECRET,
           grant_type: "authorization_code",
           code: code,
-          redirect_uri: https://papaya-piroshki-f63012.netlify.app/.netlify/functions/auth-callback
+          redirect_uri: REDIRECT_URI
         })
       }
     );
